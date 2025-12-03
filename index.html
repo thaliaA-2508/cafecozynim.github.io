@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cafe cozynim</title>
+    <style>
+        body {
+  font-family: 'Times New Roman', serif;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+        header { background: #3b2f2f; padding: 20px; color: white; position: fixed; width: 100%; top: 0; z-index: 100; }
+        nav a { margin: 0 15px; color: white; text-decoration: none; font-weight: bold; }
+        section {
+  padding: 80px 40px;
+  overflow: hidden;
+  border-bottom: 1px solid #cfcfcf; /* garis tipis tiap halaman */
+}
+        #home { background: url('hero.jpg') center/cover; color: white; height: 400px; display: flex; align-items: center; justify-content: center; flex-direction: column; }
+        /* removed old grid image styling to fix marquee */
+#gallery img {
+  height: 220px;
+  width: auto;
+  border-radius: 10px;
+}
+        .grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+        #about img {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 50%; /* jadi lingkaran */
+  display: block;
+  margin-bottom: 10px;
+}
+        #menu ul { list-style: none; padding: 0; }
+        #menu li { background: white; padding: 15px; margin: 10px 0; border-radius: 10px; }
+        /* Responsive tweaks */
+    @media (max-width: 768px) {
+        header {
+            padding: 10px 20px;
+        }
+        nav ul {
+            gap: 15px;
+        }
+        #home h1 {
+  font-size: 4rem;
+  text-align: center;
+  font-family: 'Times New Roman', serif;
+}
+        #home p {
+            font-size: 1rem;
+        }
+        .grid {
+            grid-template-columns: 1fr;
+            padding: 10px;
+        }
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+        .grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+.marquee {
+  display: flex;
+  gap: 20px;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: scroll 20s linear infinite;
+}
+
+.marquee img {
+  height: 220px;   /* tinggi tetap biar proporsi aman */
+  width: auto;      /* biar nggak ketarik lonjong */
+  border-radius: 15px;
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+  100% { transform: translateX(-50%); }
+}
+  100% { transform: translateX(-100%); }
+}
+</style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#menu">Menu</a>
+            <a href="#reviews">Reviews</a>
+        </nav>
+    </header>
+
+    <section id="home" class="h-screen flex items-center justify-center text-white" style="background: url('bg-home.jfif') center/cover no-repeat;">
+    <div class="bg-black bg-opacity-40 p-8 rounded-2xl text-center">
+        <h1 class="text-5xl font-bold mb-4">Welcome to Our Cafe⋆˚𝜗𝜚˚⋆</h1>
+        <p class="text-xl">Cozy place, delicious taste. Enjoy your moment here, with us˗ˏˋ ꒰ ♡ ꒱ ˎˊ˗</p>
+    </div>
+
+    </section>
+
+    <section id="about">
+        <h2>About the Owner</h2>
+        <div style="display:flex; gap:40px; align-items:flex-start;">
+            <div style="text-align:center; min-width:220px;">
+                <img src="owner.jpeg" alt="Owner Photo">
+                <h3>Syifa Kania S.</h3>
+            </div>
+            <div style="flex:1; min-height:250px;">
+                <p>Owner café ini dikenal sebagai sosok yang hangat, teliti, dan penuh ide kreatif. Ia punya perhatian besar pada kenyamanan pengunjung, dari kualitas rasa, pelayanan, sampai suasana café yang dibuat dengan estetik dan menenangkan. Sikapnya yang ramah dan mudah berbaur membuat café terasa hidup dan welcoming, sementara ketelitiannya menjaga setiap detail tetap rapi dan profesional. Berkat sentuhan pribadinya, café ini punya karakter unik yang bikin orang betah datang lagi.</p>
+            </div>
+        </div>
+
+        </div> <!-- end flex wrapper -->
+
+        
+        </div>
+</section>
+
+    <section id="gallery">
+  <h2>Gallery</h2>
+      <style>
+.galeri-container {
+    /* Menentukan lebar area yang terlihat */
+    width: 100%;
+    /* Menyembunyikan bagian gambar yang keluar dari area pandang */
+    overflow: hidden;
+    /* Memberi sedikit ruang di tepi */
+    padding: 20px 0;
+    /* Pastikan posisi relatif untuk menampung wrapper absolut jika diperlukan */
+    position: relative; 
+}
+
+.galeri-wrapper {
+    /* Menggunakan flexbox untuk menata gambar secara horizontal */
+    display: flex;
+    /* Memastikan semua gambar berada dalam satu baris */
+    white-space: nowrap; 
+    /* Menghilangkan ruang default antara elemen inline */
+    gap: 10px; 
+
+    /* === ANIMASI UTAMA === */
+    /* Menerapkan animasi yang bernama 'scroll' selama 20 detik, 
+       linear (kecepatan konstan), dan tak terbatas */
+    animation: scroll 20s linear infinite;
+}
+
+/* Menghentikan animasi saat kursor diarahkan ke galeri (opsional) */
+.galeri-wrapper:hover {
+    animation-play-state: paused;
+}
+
+.galeri-wrapper img {
+    /* Mengatur ukuran gambar */
+    height: 150px; /* Sesuaikan tinggi yang Anda inginkan */
+    width: auto;
+    /* Pastikan gambar tidak menyusut atau meregang */
+    flex-shrink: 0;
+    /* Memberi tampilan sudut yang lebih halus (opsional) */
+    border-radius: 8px; 
+    object-fit: cover; /* Memastikan gambar terisi penuh tanpa distorsi */
+}
+
+/* === DEFINISI KEYFRAMES === */
+@keyframes scroll {
+    /* Dimulai dari posisi normal (0% pergeseran X) */
+    0% {
+        transform: translateX(0);
+    }
+    /* Diakhiri dengan pergeseran ke kiri sebesar 50% dari total lebar wrapper */
+    /* Nilai 50% ini penting karena kita menduplikasi kontennya */
+    100% {
+        transform: translateX(-50%);
+    }
+}
+</style>
+
+  <div class="galeri-container">
+    <div class="galeri-wrapper">
+        <!-- Set pertama gambar -->
+        <img src="interior.jpg" alt="interior">
+        <img src="view.jpg" alt="view">
+        <img src="coffee1.jpg" alt="coffee1">
+        <img src="coffee2.jpg" alt="coffee2">
+        <img src="food1.jpg" alt="food1">
+        <img src="food2.jpg" alt="food2">
+        <!-- Tambahkan lebih banyak gambar sesuai kebutuhan -->
+
+        <!-- Set kedua gambar (duplikasi yang persis sama) -->
+        <img src="interior.jpg" alt="interior">
+        <img src="view.jpg" alt="view">
+        <img src="coffee1.jpg" alt="coffee1">
+        <img src="coffee2.jpg" alt="coffee2">
+        <img src="food1.jpg" alt="food1">
+        <img src="food2.jpg" alt="food2">
+
+</div>
+</section>
+
+    <section id="menu">
+        <h2>Our Best Menu</h2>
+        <div class="grid">
+            <div style="background:white; padding:15px; border-radius:10px; text-align:center;">
+                <img src="hot.jpg" style="width:100%; border-radius:10px;" />
+                <h3>Hot Coffee</h3>
+                <p>Rp 18.000</p>
+            </div>
+            <div style="background:white; padding:15px; border-radius:10px; text-align:center;">
+                <img src="iced.jpg" style="width:100%; border-radius:10px;" />
+                <h3>Iced Coffee</h3>
+                <p>Rp 20.000</p>
+            </div>
+            <div style="background:white; padding:15px; border-radius:10px; text-align:center;">
+                <img src="milkshake.jpg" style="width:100%; border-radius:10px;" />
+                <h3>Coffee Milkshake</h3>
+                <p>Rp 26.000</p>
+            </div>
+            <div style="background:white; padding:15px; border-radius:10px; text-align:center;">
+                <img src="sandwich.jpg" style="width:100%; border-radius:10px;" />
+                <h3>Sandwich</h3>
+                <p>Rp 15.000</p>
+            </div>
+            <div style="background:white; padding:15px; border-radius:10px; text-align:center;">
+                <img src="pasta.jpg" style="width:100%; border-radius:10px;" />
+                <h3>Pasta</h3>
+                <p>Rp 30.000</p>
+            </div>
+            <div style="background:white; padding:15px; border-radius:10px; text-align:center;">
+                <img src="tiramisu.jpg" style="width:100%; border-radius:10px;" />
+                <h3>Tiramisu Cake</h3>
+                <p>Rp 25.000</p>
+            </div>
+        </div>
+    </section>
+
+<section id="reviews" style="text-align:center; padding:60px 40px; border-top:1px solid #cfcfcf;">
+    <h2>Customer Reviews</h2>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px; max-width:1000px; margin:20px auto; text-align:left;">
+        <div style="background:#fff; padding:15px; border-radius:10px; margin-bottom:15px; border:1px solid #dedede;">
+            <p><strong>Nurul A.</strong></p>
+            <p>Enak banget kopinya, tempatnya cozy buat nugas ♡</p>
+            <p>⭐️⭐️⭐️⭐️⭐️</p>
+        </div>
+        <div style="background:#fff; padding:15px; border-radius:10px; margin-bottom:15px; border:1px solid #dedede;">
+            <p><strong>Dimas R.</strong></p>
+            <p>Pelayanannya ramah bener, bakal balik lagi!</p>
+            <p>⭐️⭐️⭐️⭐️</p>
+        </div>
+        <div style="background:#fff; padding:15px; border-radius:10px; margin-bottom:15px; border:1px solid #dedede;">
+            <p><strong>Salsa M.</strong></p>
+            <p>Matcha lattenya wajib coba sih, favorit baru!</p>
+            <p>⭐️⭐️⭐️⭐️⭐️</p>
+        </div>
+    </div>
+</section>
+
+  <!-- Contact Us moved to last page -->
+<section id="contact" style="text-align:center; padding:60px 40px; border-top:1px solid #cfcfcf;">
+    <h2>Contact Us</h2>
+    <div style="display:flex; justify-content:center; gap:20px; margin-top:15px;">
+        <a href="mailto:syifakania1526@gmail.com"><img src="email.jpg" style="width:35px; height:35px; border-radius:50%;""></a>
+        <a href="https://instagram.com/ilmpark" target="_blank"><img src="instagram.jpg" style="width:35px; height:35px; border-radius:50%;""></a>
+        <a href="https://wa.me/6281388554778" target="_blank"><img src="wa.jpg" style="width:35px; height:35px; border-radius:50%;""></a>
+    </div>
+</section>
+
+<script>
+// Smooth scrolling animation for nav links
+document.querySelectorAll('nav a').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+</script>
+</body>
+</html>
